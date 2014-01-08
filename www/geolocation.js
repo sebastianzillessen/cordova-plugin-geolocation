@@ -215,7 +215,7 @@ var geolocation = {
     isAuthorized: function(successCallback, failCallback){
         if (successCallback){
             try{
-                exec(successCallback, failCallback, "Geolocation", "clearWatch", []);
+                exec(successCallback, failCallback, "Geolocation", "isAuthorized", []);
             }else {
                 successCallback(true);
             }
