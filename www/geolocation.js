@@ -205,6 +205,21 @@ var geolocation = {
             timers[id].timer = false;
             exec(null, null, "Geolocation", "clearWatch", [id]);
         }
+    },
+    /**
+     * Checks if the user has authorized GPS tracking for this application. 
+     * Returns in the moment true on all platforms expect for iOS. 
+     * On iOS it checks if the use has to confirm the access to the geolocatio api by accepting
+     * the upcoming prompt. If he has, then it returns false.
+     **/
+    isAuthorized: function(successCallback, failCallback){
+        if (successCallback){
+            try{
+                exec(successCallback, failCallback, "Geolocation", "clearWatch", []);
+            }else {
+                successCallback(true);
+            }
+        }
     }
 };
 
